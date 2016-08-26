@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yy.dao.TeacherRecommendMapper" >
+  <resultMap id="BaseResultMap" type="com.yy.bean.TeacherRecommend" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="ssid" property="ssid" jdbcType="BIGINT" />
+    <result column="channel_title" property="channelTitle" jdbcType="VARCHAR" />
+    <result column="channel_cover_url" property="channelCoverUrl" jdbcType="VARCHAR" />
+    <result column="is_channel_recommend" property="isChannelRecommend" jdbcType="BIT" />
+    <result column="area" property="area" jdbcType="INTEGER" />
+    <result column="is_special" property="isSpecial" jdbcType="BIT" />
+    <result column="start_date" property="startDate" jdbcType="DATE" />
+    <result column="end_date" property="endDate" jdbcType="DATE" />
+    <result column="start_time" property="startTime" jdbcType="TIME" />
+    <result column="end_time" property="endTime" jdbcType="TIME" />
+    <result column="days" property="days" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, sid, ssid, channel_title, channel_cover_url, is_channel_recommend, area, 
+    is_special, start_date, end_date, start_time, end_time, days
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from teacher_recommend
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from teacher_recommend
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.yy.bean.TeacherRecommend" >
+    insert into teacher_recommend (id, uid, sid, ssid, 
+      channel_title, channel_cover_url, is_channel_recommend, 
+      area, is_special, start_date, 
+      end_date, start_time, end_time, 
+      days)
+    values (#{id,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{sid,jdbcType=BIGINT}, #{ssid,jdbcType=BIGINT}, 
+      #{channelTitle,jdbcType=VARCHAR}, #{channelCoverUrl,jdbcType=VARCHAR}, #{isChannelRecommend,jdbcType=BIT}, 
+      #{area,jdbcType=INTEGER}, #{isSpecial,jdbcType=BIT}, #{startDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{startTime,jdbcType=TIME}, #{endTime,jdbcType=TIME}, 
+      #{days,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yy.bean.TeacherRecommend" >
+    update teacher_recommend
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="sid != null" >
+        sid = #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="ssid != null" >
+        ssid = #{ssid,jdbcType=BIGINT},
+      </if>
+      <if test="channelTitle != null" >
+        channel_title = #{channelTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCoverUrl != null" >
+        channel_cover_url = #{channelCoverUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="isChannelRecommend != null" >
+        is_channel_recommend = #{isChannelRecommend,jdbcType=BIT},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=INTEGER},
+      </if>
+      <if test="isSpecial != null" >
+        is_special = #{isSpecial,jdbcType=BIT},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIME},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIME},
+      </if>
+      <if test="days != null" >
+        days = #{days,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
