@@ -24,10 +24,19 @@ public class JodaDemo {
 		System.out.println(getDate("09-22".split("-")));
 		System.out.println(getDate("22".split("-")));*/
 		
-		System.out.println(getTime("10:30:25".split(":")));
+	/*	System.out.println(getTime("10:30:25".split(":")));
 		System.out.println(getTime("10:30".split(":")));
 		System.out.println(getTime("22".split(":")));
-		System.out.println(DateTime.now().toDate());
+		System.out.println(DateTime.now().toDate());*/
+		DateTime dt = DateTime.now().withDayOfMonth(6);
+		//1473091200000
+		//1473152211225
+		System.out.println(dt.getMillis());
+		DateTime dt2 = new DateTime(1473091200000L);
+		DateTime dt3 = dt2.plusMonths(12);
+		System.out.println(dt3.getMillis());
+		System.out.println(dt2.toString("yyyy-MM-dd"));
+		System.out.println(dt3.toString("yyyy-MM-dd"));
 	}
 	private static void test(){
 		DateTime strToDateTime = strToDateTime("08-09", "MM-dd");
