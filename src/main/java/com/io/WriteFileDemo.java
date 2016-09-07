@@ -2,8 +2,8 @@ package com.io;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.Charset;
 
+import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
 /***
@@ -29,7 +29,7 @@ public class WriteFileDemo {
 	public static void writeToFile(String content,String filePath) throws IOException{
 		System.out.println("write file start..");
 		File file = new File(filePath);
-		Files.write(content.getBytes(Charset.forName("UTF-8")), file);
+		Files.write(content.getBytes(Charsets.UTF_8), file);
 		System.out.println("write file success..filePath:" + filePath);
 	}
 }

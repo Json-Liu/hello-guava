@@ -3,8 +3,8 @@ package com.io;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.nio.charset.Charset;
 
+import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableList;
 import com.google.common.io.ByteSource;
 import com.google.common.io.CharSource;
@@ -43,7 +43,7 @@ public class ReadFileDemo {
 		try {
 			long size = asByteSource.size();
 			System.out.println("file size :"+size);
-			CharSource asCharSource = asByteSource.asCharSource(Charset.forName("UTF-8"));
+			CharSource asCharSource = asByteSource.asCharSource(Charsets.UTF_8);
 			String content = asCharSource.read();
 			System.out.println("-------------------------------readFileFromUrlWithByte START--------------------------------");
 			System.out.println(content);
@@ -64,7 +64,7 @@ public class ReadFileDemo {
 	 */
 	public static void readFileFromUrlWithChar( URL url ) throws IOException{
 		System.out.println("-------------------------------readFileFromUrlWithChar START--------------------------------");
-		CharSource asCharSource = Resources.asCharSource(url, Charset.forName("UTF-8"));
+		CharSource asCharSource = Resources.asCharSource(url, Charsets.UTF_8);
 		String allContent = asCharSource.read();
 		System.out.println(allContent);//一次读取所有内容 作为一个字符串
 		System.out.println("-------------------------------我是分隔线--------------------------------");
@@ -82,7 +82,7 @@ public class ReadFileDemo {
 	public static void readFileFromFilePath(String filePath ) throws IOException{
 		File file = new File(filePath);
 		System.out.println("-------------------------------readFileFromFilePath START--------------------------------");
-		CharSource asCharSource = Files.asCharSource(file, Charset.forName("UTF-8"));
+		CharSource asCharSource = Files.asCharSource(file, Charsets.UTF_8);
 		asCharSource.read();
 		System.out.println("-------------------------------我是分隔线--------------------------------");
 		ImmutableList<String> readLines = asCharSource.readLines();
