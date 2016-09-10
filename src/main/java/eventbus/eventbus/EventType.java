@@ -6,6 +6,7 @@ import com.google.common.eventbus.EventBus;
  ** @Version 1.0
  **/
 public enum EventType {
+	BASE(new EventBus("base")),
 	SUCESS(new EventBus("success event")),
 	FAILURE(new EventBus("failure event"));
 	private EventBus eventBus;

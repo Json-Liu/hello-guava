@@ -14,23 +14,24 @@ import eventbus.eventbus.EventType;
 public class EventProducer {
 	private static EventBus sucEventBus = EventType.SUCESS.getEventBus();
 	private static EventBus failEventBus = EventType.FAILURE.getEventBus();
+	private static EventBus baseEventBus = EventType.BASE.getEventBus();
 	public<T> void addSucListener( T t){
 		sucEventBus.register(t);
 	}
 	public<T> void addFailListener( T t){
 		failEventBus.register(t);
 	}
-	public void publishSucEvent(){
-		SucEvent sucEvent = new SucEvent();
-		sucEvent.setCode(1);
-		sucEvent.setValue(" work  done success.");
+	public<T> void addBaseListener(T t){
+		baseEventBus.register(t);
+	}
+	public void publishSucEvent( SucEvent sucEvent ){
 		sucEventBus.post(sucEvent);
 	}
-	public void publishFailEvent(){
-		FailEvent failEvent = new FailEvent();
-		failEvent.setCode(1);
-		failEvent.setValue(" work  done fail.");
+	public void publishFailEvent(FailEvent failEvent){
 		failEventBus.post(failEvent);
+	}
+	public<T> void publishBaseEvent(T t){
+		baseEventBus.post(t);
 	}
 }
 

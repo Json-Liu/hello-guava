@@ -20,5 +20,9 @@ public class EventListener {
 	public void getFailEvent(FailEvent failEvent){
 		System.out.println(getClass().getSimpleName() + " get message :"+failEvent +" at " + DateTime.now().toString("yyyy-MM-dd HH:mm:ss") );
 	}
+	@Subscribe
+	public<T> void getBaseEvent(T t){
+		System.out.println( t.getClass() + t.toString());
+	}
 }
 
