@@ -43,7 +43,7 @@ public class LoadingCacheDemoV3 {
 			// ignore
 		}
 		System.out.println(" will to remove expire keys.");
-		loadingCache.getUnchecked(11);//触发移除过期的KEY
+		loadingCache.getUnchecked(11);//触发移除过期的KEY.
 	}
 }
 
